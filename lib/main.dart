@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:steps_counter/screens/collect_screen.dart';
-import 'package:steps_counter/widgets/action_button.dart';
+import 'package:steps_counter/widgets/collect_screen/action_button.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -35,6 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     CollectScreen(),
+    CollectScreen(),
+    CollectScreen(),
+    CollectScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -52,16 +58,16 @@ class _MyHomePageState extends State<MyHomePage> {
         iconTheme: const IconThemeData(color: Colors.grey),
         backgroundColor: Colors.white,
         elevation: 0,
-        actions: const [
-          ActionButton(
+        actions: [
+          actionButton(
             icon: Icon(Icons.shopping_cart_outlined),
             count: "0",
           ),
-          ActionButton(
+          actionButton(
             icon: Icon(Icons.mail_outline),
             count: "0",
           ),
-          ActionButton(
+          actionButton(
             icon: Icon(Icons.notifications_outlined),
             count: "0",
           ),

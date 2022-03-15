@@ -24,7 +24,7 @@ Widget cardElement(String title, IconData icon, {String? span}) {
               TextSpan(
                   text: title,
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: int.parse(title) > 100 ? 10 : 16,
                       fontWeight: FontWeight.bold,
                       color: Colors.grey.shade600)),
               TextSpan(
